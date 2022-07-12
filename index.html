@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;700&family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/themes/prism-okaidia.min.css"
+      integrity="sha512-mIs9kKbaw6JZFfSuo+MovjU+Ntggfoj8RwAmJbVXQ5mkAX5LlgETQEweFPI18humSPHymTb5iikEOKWF7I8ncQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <title>CSS Blog</title>
+  </head>
+  <body>
+    <header>
+      <div class="heading">
+        <h1><span>CSS</span><span>blog</span></h1>
+        <div class="bars">
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="to-top">
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+      <aside class="list">
+        <h3>FlexBox</h3>
+        <ul>
+          <li>
+            <a href="#mengubah-container-menjadi-flexbox" class="list-item"
+              >mengubah container menjadi flexbox</a
+            >
+          </li>
+          <li>
+            <a href="#flex-direction" class="list-item">flex-direction</a>
+          </li>
+          <li><a href="#flex-wrap" class="list-item">flex-wrap</a></li>
+          <li><a href="#flex-flow" class="list-item">flex-flow</a></li>
+          <li>
+            <a href="#justify-content" class="list-item">justify-content</a>
+          </li>
+          <li><a href="#align-items" class="list-item">align-items</a></li>
+          <li>
+            <a href="#align-content" class="list-item">align-content</a>
+          </li>
+          <li><a href="#flex-grow" class="list-item">flex-grow</a></li>
+          <li><a href="#flex-shrink" class="list-item">flex-shrink</a></li>
+          <li><a href="#flex-basis" class="list-item">flex-basis</a></li>
+          <li><a href="#flex" class="list-item">flex</a></li>
+          <li><a href="#order" class="list-item">order</a></li>
+          <li>
+            <a href="#nested-flexbox" class="list-item">nested flexbox</a>
+          </li>
+        </ul>
+      </aside>
+      <div class="content">
+        <section class="post">
+          <article>
+            <h2>FlexBox</h2>
+            <p>
+              FlexBox adalah suatu mode untuk mengatur tata letak item di dalam
+              sebuah container atau wadah secara horizontal atau vertikal. Item
+              dalam container akan mengembang atau menyusut memenuhi
+              containernya.
+            </p>
+            <p>
+              Sebelumnya kita buat studi kasus sederhana, membuat tiga buah box
+              didalam sebuah container.
+            </p>
+            <pre class="language-html">
+<code class="language-html">&lt;div class="container"&gt;
+    &lt;div class="box1"&gt;&lt;/div&gt;
+    &lt;div class="box2"&gt;&lt;/div&gt;
+    &lt;div class="box3"&gt;&lt;/div&gt;
+&lt;/div&gt;</code>
+</pre>
+            <p>Dan kita akan memberi sedikit css.</p>
+            <pre class="language-css"><code>.container {
+  margin: auto;
+  width: 200px;
+  border: 3px solid black;
+}
+.box1 {
+  width: 100px;
+  height: 100px;
+  background-color: salmon;
+}              
+.box2 {
+  width: 100px;
+  height: 100px;
+  background-color: magenta;
+}              
+.box3 {
+  width: 100px;
+  height: 100px;
+  background-color: cadetblue;
+}</code></pre>
+            <img src="assets/images/tiga-kotak.png" alt="" />
+          </article>
+          <article>
+            <h3 id="mengubah-container-menjadi-flexbox">
+              Mengubah container menjadi flexbox
+            </h3>
+            <p>
+              Untuk memberitahu sebuah komponen menjadi container flexbox, kamu
+              hanya perlu memberi properti <code>display: flex</code>, maka
+              komponen itu akan menjadi container dan semua elemen didalamnya
+              menjadi item.
+            </p>
+            <p>
+              Coba tambahkan properti <code>display: flex</code> pada class
+              container.
+            </p>
+            <pre class="language-css"><code class="language-css">.container {
+  display: flex;
+}</code></pre>
+            <img
+              src="assets/images/mengubah-menjadi-flexbox.png"
+              alt="mengubah container menjadi flexbox"
+            />
+            <p>
+              Setelah container menjadi flex, ketiga item akan berjejer secara
+              horizontal.
+            </p>
+          </article>
+          <article>
+            <h3 id="flex-direction">flex-direction</h3>
+            <p>
+              Secara default arah dari flex adalah berjejer kesamping / row.
+              Kamu juga bisa mengubah arah flex menjadi berjejer kebawah dengan
+              memberi properti
+              <code>flex-direction: column;</code> pada container.
+            </p>
+            <pre class="language-css"><code class="language-css">.container {
+  flex-direction: column;
+}</code></pre>
+            <img
+              src="assets/images/tiga-kotak.png"
+              alt="mengubah arah menggunakan flex-direction"
+            />
+            <p>
+              Setelah memberikan <code>flex-direction: column;</code>, maka
+              kotak akan berjejer kebawah. Selain row dan column, kamu juga bisa
+              menggunakan row-reverse dan column-reverse untuk membalik urutan
+              item.
+            </p>
+            <pre><code class="language-css">flex-direction: row | column | row-reverse | column-reverse;</code></pre>
+          </article>
+          <article>
+            <h3 id="flex-wrap">flex-wrap</h3>
+            <p>
+              Secara default semua item akan berjejer kesamping memenuhi
+              containernya hingga ukuran item akan menyusut sampai lebih kecil
+              dari lebar yang diberikan jika container sudah tidak dapat
+              menampung item-itemnya. Untuk menghindari itu, kita bisa
+              menggunakan propreti
+              <code>flex-wrap: wrap;</code> agar item yang lebih kecil dari
+              lebar yang diberikan dapat kembali keukuran awalnya dan item yang
+              tidak tertampung oleh container akan menempati baris berikutnya.
+            </p>
+            <pre class="language-css"><code class="language-css">.container {
+  flex-wrap: wrap;
+}</code></pre>
+            <img
+              src="assets/images/flex-wrap.png"
+              alt="memberikan flex-wrap pada container"
+            />
+          </article>
+          <article>
+            <h3 id="flex-flow">flex-flow</h3>
+            <p>
+              Properti ini adalah singkatan dari flex-direction dan flex-wrap.
+            </p>
+            <pre
+              class="language-css"
+            ><code class="language-css">flex-direction: row;
+flex-wrap: nowrap;</code></pre>
+            <p>Menjadi:</p>
+            <pre
+              class="language-css"
+            ><code class="language-css">flex-flow: row nowrap;</code></pre>
+          </article>
+          <article>
+            <h3 id="justify-content">justify-content</h3>
+            <p>
+              Secara default, flex item akan berjejer rapat kesamping. Kamu juga
+              bisa mengatur letak item secara horizontal menggunakan properti
+              <code>justify-content: flex-start;</code>.
+            </p>
+            <p>
+              Kita ubah lebar container sehingga akan terdapat sisa ruang
+              kosong.
+            </p>
+            <pre class="language-css"><code class="language-css">.container {
+  width: 500px;
+  justify-content: flex-start;
+}</code></pre>
+            <img src="assets/images/justify-content.png" alt="tiga kotak" />
+            <p>
+              Sekarang kita ubah posisi item ke tengah dengan memberikan
+              properti
+              <code>justify-content: center;</code> pada container.
+            </p>
+            <pre class="language-css"><code class="language-css">.container {
+  justify-content: center;
+}</code></pre>
+            <img
+              src="assets/images/justify-content-center.png"
+              alt="justify content center"
+            />
+            <p>
+              Ada beberapa nilai dari properti ini yaitu flex-start(default),
+              flex-end, center, space-around, space-between, dan space-evenly.
+            </p>
+            <pre
+              class="language-css"
+            ><code class="language-css">justify-content: flex-start | flex-end | center | space-around | space-between | space-evenly</code></pre>
+          </article>
+          <article>
+            <h3 id="align-items">align-items</h3>
+            <p>
+              Selain bisa mengatur item secara horizontal, kamu juga bisa
+              mengatur item secara vertikal menggunakan properti
+              <code>align-items: stretch;</code>.
+            </p>
+            <p>
+              Tambahkan <code>height: 100px;</code> kemudian hapus
+              <code>height: 100px;</code> pada semua item. Tambahkan juga text
+              pada kotak.
+            </p>
+            <pre
+              class="language-html"
+            ><code class="language-html">&lt;div class="container"&gt;
+    &lt;div class="box1"&gt;Kotak 1&lt;/div&gt;
+    &lt;div class="box2"&gt;Kotak 2&lt;/div&gt;
+    &lt;div class="box3"&gt;Kotak 3&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            <pre class="language-css"><code class="language-css">.container {
+  width: 500px;
+  height: 100px;
+  display: flex;
+  align-items: stretch;
+}
+.box1 {
+  width: 100px;
+  background-color: salmon;
+}              
+.box2 {
+  width: 100px;
+  background-color: magenta;
+}              
+.box3 {
+  width: 100px;
+  background-color: cadetblue;
+}</code></pre>
+            <img
+              src="assets/images/align-items.png"
+              alt="align items stretch"
+            />
+            <p>
+              Secara default nilai <code>align-items: stretch</code> yang
+              artinya item akan memenuhi tinggi dari containernya. Kita bisa
+              memberikan <code>align-items: center;</code> sehingga item akan
+              berada di tengah dan item akan memiliki tinggi sama dengan
+              kontennya.
+            </p>
+            <pre class="language-css"><code class="language-css">.container {
+  align-items: center;
+}</code></pre>
+            <img
+              src="assets/images/align-items-center.png"
+              alt="align items center"
+            />
+            <p>
+              Ada beberapa nilai dari properti ini yaitu stretch (default),
+              flex-start, flex-end, center, dan baseline.
+            </p>
+            <pre
+              class="language-css"
+            ><code class="language-css">align-items: stretch | flex-start | flex-end | center | baseline</code></pre>
+          </article>
+          <article>
+            <h3 id="align-content">align-content</h3>
+            <p>
+              Properti ini memiliki fungsi yang sama dengan align-items, hanya
+              saja properti ini hanya bisa digunakan jika item lebih dari satu
+              baris.
+            </p>
+            <pre class="language-css"><code class="language-css">.container {
+  width: 200px;
+  flex-wrap: wrap;
+  align-content: stretch;
+}</code></pre>
+            <img
+              src="assets/images/align-content.png"
+              alt="align content stretch"
+            />
+            <p>
+              Secara default nilai <code>align-content: stretch</code>. Kita
+              bisa memberikan <code>align-content: space-around;</code> sehingga
+              item akan memiliki margin yang sama atas dan bawahnya.
+            </p>
+            <pre class="language-css"><code class="language-css">.container {
+  align-content: space-around;
+}</code></pre>
+            <img
+              src="assets/images/align-content-space-around.png"
+              alt="align content space around"
+            />
+            <p>
+              Beberapa nilai propertinya yaitu stretch (default), flex-start,
+              flex-end, center, space-around, dan space-between.
+            </p>
+            <pre
+              class="language-css"
+            ><code class="language-css">align-content: stretch | flex-start | flex-end | center | space-around | space-between </code></pre>
+          </article>
+          <article>
+            <h3 id="flex-grow">flex-grow</h3>
+            <p>
+              Properti ini digunakan untuk memperbesar item kesamping memenuhi
+              area kosong container. Secara default
+              <code>flex-grow: 0;</code> yang berarti item tidak dapat membesar
+              atau tumbuh. Flex-grow hanya bernilai 0 dan angka positif tanpa
+              satuan.
+            </p>
+            <p>Sebelum ditambahkan flex-grow pada item.</p>
+            <img
+              src="assets/images/align-items.png"
+              alt="Sebelum diberi flex-grow"
+            />
+            <p>Sekarang tambahkan <code>flex-grow: 1;</code> pada kotak 1.</p>
+            <pre class="language-css"><code class="language-css">.box1 {
+  flex-grow: 1;
+}</code></pre>
+            <img src="assets/images/flex-grow.png" alt="flex grow pada box 1" />
+            <p>Maka kotak 1 akan memenuhi area kosong dari containernnya.</p>
+          </article>
+          <article>
+            <h3 id="flex-shrink">flex-shrink</h3>
+            <p>
+              Properti ini digunakan untuk memperkecil item jika container tidak
+              dapat menampung item-itemnya. Secara default
+              <code>flex-shrink: 1;</code> yang berarti item akan mengecil atau
+              menyusut jika container tidak cukup. Jika kamu memberikan properti
+              <code>flex-shrink: 0;</code> pada item, maka item tidak bisa
+              mengecil atau menyusut. <code>flex-shrink</code> memiliki nilai
+              yang sama dengan <code>flex-grow</code>.
+            </p>
+            <img src="assets/images/flex-shrink.png" alt="flex shrink" />
+            <p>
+              Pada gambar diatas, kita beri <code>width: 200px;</code> pada
+              container dan <code>width: 100px;</code> pada semua item. Harusnya
+              item keluar dari containernya karena lebar item melebihi
+              container, tapi karena item memiliki nilai default
+              <code>flex-shrink: 1;</code> maka semua item akan mengecil
+              menyesuaikan lebar containernya.
+            </p>
+            <p>
+              Sekarang kita beri <code>flex-shrink: 0;</code> pada kotak 1, maka
+              <code>width</code> kotak 1 akan dipertahan untuk tidak berkurang
+              atau mengecil.
+            </p>
+            <pre class="language-css"><code class="language-css">.box1 {
+  flex-shrink: 0;
+}</code></pre>
+            <img
+              src="assets/images/flex-shrink-1.png"
+              alt="flex shrink 0 pada kotak 1"
+            />
+            <p>
+              Bagaimana jika semua item kita beri
+              <code>flex-shrink: 0;</code>.
+            </p>
+            <pre
+              class="language-css"
+            ><code class="language-css">.box1, .box2, .box3 {
+  flex-shrink: 0;
+}</code></pre>
+            <img
+              src="assets/images/flex-shrink-2.png"
+              alt="flex shrink 0 pada semua item"
+            />
+            <p>
+              Maka item akan overflow karena lebar item melebihi containernya.
+            </p>
+          </article>
+          <article>
+            <h3 id="flex-basis">flex-basis</h3>
+            <p>
+              Properti ini digunakan memberikan nilai lebar pada item. Properti
+              ini mirip dengan <code>width</code>.
+            </p>
+            <p>
+              Sekarang kita ganti properti <code>width: 100px;</code> pada semua
+              item dengan <code>flex-basis: 100px;</code>.
+            </p>
+            <pre
+              class="language-css"
+            ><code class="language-css">.box1, .box2, .box3 {
+  flex-basis: 100px;
+}</code></pre>
+            <img src="assets/images/flex-shrink.png" alt="flex basis 100px" />
+            <p>Maka akan mengeluarkan hasil yang sama.</p>
+          </article>
+          <article>
+            <h3 id="flex">flex</h3>
+            <p>
+              <code>flex</code> merupakan singkatan dari <code>flex-grow</code>,
+              <code>flex-shrink</code>, dan <code>flex-basis</code>. Jika kamu
+              menuliskan satu nilai saja, maka flex sama dengan
+              <code>flex-grow</code>.
+            </p>
+            <pre class="language-css"><code class="language-css">flex-grow: 1;
+flex-shrink: 1;
+flex-basis: 100px;</code></pre>
+            <p>Menjadi:</p>
+            <pre
+              class="language-css"
+            ><code class="language-css">flex: 1 1 100px;</code></pre>
+          </article>
+          <article>
+            <h3 id="order">Order</h3>
+            <p>
+              Properti ini digunakan untuk mengatur urutan tata letak dari item,
+              kita bisa memindahkan item yang di tengah menjadi diawal atau item
+              yang ada diawal dipindahkan ke yang paling akhir itu akan sangat
+              mudah denan properti ini. Secara default semua item memiliki nilai
+              <code>order: 0;</code>, sehingga jika kita memberikan properti
+              <code>order: 1;</code> pada salah satu item, maka item itu akan
+              pindah ke akhir. Sebaliknya, jika kita memberikan nilai
+              <code>order: -1;</code> maka item itu akan pindah ke awal.
+            </p>
+            <p>Sekarang kita pindah kotak 2 berada disebelah kanan.</p>
+            <pre class="language-css"><code class="language-css">.box2 {
+  order: 1;
+}</code></pre>
+            <img
+              src="assets/images/order.png"
+              alt="memindah posisi dengan order"
+            />
+          </article>
+          <article>
+            <h3 id="nested-flexbox">Nested FlexBox</h3>
+            <p>
+              Nested FlexBox adalah kita membuat flexbox bersarang atau
+              bertumpul dengan kata lain kita menjadi item flexbox menjadi
+              container flexbox juga.
+            </p>
+            <p>
+              Sekarang kita akan mencoba meletakkan tulisan didalam kotak berada
+              di tengah-tengah.
+            </p>
+            <pre
+              class="language-html"
+            ><code class="language-html">&lt;div class="container"&gt;
+  &lt;div class="box1"&gt;
+    &lt;p&gt;Kotak 1&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="box2"&gt;
+    &lt;p&gt;Kotak 2&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="box3"&gt;
+    &lt;p&gt;Kotak 3&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            <p>Sekarang kita tambahkan CSS.</p>
+            <pre class="language-css"><code class="language-css">.container {
+  width: 300px;
+  height: 100px;
+  display: flex;
+  margin: auto;
+  border: 3px solid black;
+}
+
+.box1, .box2, .box3 {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.box1 {
+  background-color: salmon;
+}
+
+.box2 {
+  background-color: magenta;
+}
+
+.box3 {
+  background-color: cadetblue;
+}
+
+.box1 p, .box2 p, .box3 p {
+  background-color: aqua;
+}</code></pre>
+            <img src="assets/images/nested-flexbox.png" alt="Nested Flexbox" />
+          </article>
+        </section>
+        <aside class="profile">
+          <div class="profile-card">
+            <img
+              src="assets/images/profile.png"
+              class="avatar"
+              alt="foto penulis"
+            />
+            <h3 class="profile-card__name">Khoirur Roziqin</h3>
+            <p class="profile-card__desc">Malang - 21 tahun</p>
+          </div>
+        </aside>
+        <footer><p>&copy;2021 - Khoirur Roziqin</p></footer>
+      </div>
+    </main>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/components/prism-core.min.js"
+      integrity="sha512-9khQRAUBYEJDCDVP2yw3LRUQvjJ0Pjx0EShmaQjcHa6AXiOv6qHQu9lCAIR8O+/D8FtaCoJ2c0Tf9Xo7hYH01Q=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/plugins/autoloader/prism-autoloader.min.js"
+      integrity="sha512-fTl/qcO1VgvKtOMApX2PdZzkziyr2stM65GYPLGuYMnuMm1z2JLJG6XVU7C/mR+E7xBUqCivykuhlzfqxXBXbg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>
